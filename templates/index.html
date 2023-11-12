@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MarkGen.ai</title>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='app.css') }}">
+    <link rel="icon" type="image/jpg" href="{{ url_for('static', filename='logo.jpg') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <script>
+
+        let count = 0
+
+        function generatePoster() {
+
+                if (count >= 3)
+                {
+                    console.log("I was here")
+                    var button = document.getElementById("myInput")
+                    button.disabled = false;
+                    button.style.backgroundColor = 'green';
+                    button.style.cursor = 'pointer';
+                }
+
+
+                
+        } 
+
+    </script>
+
+
+
+  </head>
+  <body>
+    <div class="container">
+        <br />
+        <h1>MarkGen.ai</h1>
+        <br />
+
+        <div class="box1" id="box1">   
+            <div class="answerRow">
+                <img src="https://i2.wp.com/cdn.auth0.com/avatars/ch.png?ssl=1">
+                <div class="answer">
+                    <p>Welcome to MarkGen! What can we help you promote today?</p>
+                </div>
+            </div>
+        </div>
+
+      <div class="box2">
+        <textarea name="chat" id="chat" rows="5" cols="5" on></textarea>
+        <input type="button" value="Submit" id="submit" onclick="fetchResponse()"/>
+      </div>
+
+      <div class="box2">
+        <form action = "{{url_for('generate')}}" method="POST">
+            <input type="hidden" id="hiddenInput" />
+            <input type="submit" value="Generate Content" disabled="disabled" id="myInput" class = "generate" />
+        </form>
+      </div>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MarkGen.ai</title>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='app.css') }}">
+    <link rel="icon" type="image/jpg" href="{{ url_for('static', filename='logo.jpg') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  </head>
+  <body>
+    <div class="container">
+        <br />
+        <h1>MarkGen.ai</h1>
+        <br />
+
+      <div class="box1" id="box1" style="width: 100%;padding-left: 0px; padding-right: 0px; height:68vh!important;">   
+            <div class="smallContainer" id="smallContainer">
+                <center>
+                    <img src="{{ url_for('static', filename='template2.jpeg') }}" id ="staticImage" height="500px" width="500px">
+                </center>
+
+                <br /><br />
+
+                <!-- <div class="question" id ="question" style="padding-left: 0px;">
+                    <center> <p id ="question" style="padding-left: 150px; padding-right: 150px; font-size: large;">Caption : Join us for an enchanting night of music, laughter, and festivities as we deck the halls with joy! Indulge in delicious treats, dance to your heart's content, and embrace the spirit of the holidays with loved ones. Don't miss out on this glamorous event!</p></center>
+                    <br />
+                    <center> <b><p id ="question" style="color: #eeeeee">Hashtags : #ChristmasParty #CelebrateInStyle #MerryAndBright #WinterWonderland #JingleAllTheWay"</p> </b></center>
+                </div> -->
+
+                <div class="question" id ="question" style="padding-left: 0px;">
+                    <center> <p id ="question" style="padding-left: 150px; padding-right: 150px; font-size: large;">Caption : SoundHound's commitment to pushing the boundaries of AI innovation, coupled with Bracket Capital's strategic support, sets the stage for a future where conversational AI becomes an integral part of our daily lives. Stay tuned as SoundHound continues to lead the charge in shaping the future of AI! 🌟🤖 </p></center>
+                    <br />
+                    <center> <b><p id ="question" style="color: #eeeeee">Hashtags : ##SoundHoundAI #BracketCapital #AIInnovation #TechRevolution"</p> </b></center>
+                </div>
+
+                <br /><br />
+
+            </div>
+
+
+
+            <br /><br /><br />
+            <center><h2>Virality Analysis</h2></center>
+
+            <div class="display_container">
+                    <div class="display-positive-sentiment">
+                        <h3>Positive Sentiment Score: 92%</h3>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 92%; background-color: green;"></div>
+                        </div>
+                    </div>
+                    <div class="display-timeliness">
+                        <h3>Timeliness: 79%</h3>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 79%; background-color: #dcb234;"></div>
+                        </div>
+                    </div>
+                    <div class="display-hashtag-performance">
+                        <h3>Hashtag Performance: 67%</h3>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 67%; background-color: #ff6b6b;"></div>
+                        </div>
+                    </div>
+                    <div class="display-optimal-posting-time">
+                        <h3>Optimal Posting Time: 7:25pm</h3> <br /><span>This time frame corresponds to the post-work hours when people have finished their daily tasks and are likely to unwind and spend time on social media. Posting during this period increases the likelihood of catching your audience during their leisure time, leading to higher engagement.</span>
+                    </div>
+            </div>
+
+
+
+
+      </div>
+
+
+
+      <div class="box2">
+        <button class="linkedinButton"><i class="fab fa-twitter" style="color: #1DA1F2; font-size: 30px; padding-right: 20px;"></i></button>
+        <button id="linkedinButton" class="linkedinButton"><i class="fab fa-instagram" style="color: #E1306C; font-size: 30px; padding-right: 20px;"></i></button>
+        <button class="linkedinButton"><i class="fab fa-facebook" style="color: #4267B2; font-size: 30px; padding-right: 20px;"></i></button>
+        <button class="linkedinButton"><i class="fab fa-linkedin" style="color: #0A66C2; font-size: 30px; padding-right: 20px;"></i></button>
+        <!-- <input type="button" value="Share this on Instagram" id="submit" onclick="Share()"/> -->
+      </div>
+
+
+    </div>
+  </body>
+</html>
+
+
+
+
+<script>
+    document.getElementById('linkedinButton').addEventListener('click', function() {
+        console.log("I was here")
+        const imageName = document.getElementById('staticImage').src;
+        console.log(imageName)
+
+        fetch('/instagram', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ imageName: imageName })
+        })
+        .then(response => response.text())
+        .then(data => {
+            console.log(data); // Handle the server's response
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
+</script>
