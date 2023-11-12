@@ -63,8 +63,8 @@ async function fetchResponse()
     const options={
         method: 'POST',
         headers:{
-            // 'Authorization': "Bearer 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",
-            'Authorization': "Bearer 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",
+            // 'Authorization': "Bearer ",
+            'Authorization': "Bearer ",
             'Content-Type': "application/json",
         },
         body: JSON.stringify({
